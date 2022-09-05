@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useContext, useEffect } from 'react';
+import React, { useMemo, useState, useContext } from 'react';
 import ModalContext from './ModalContext';
 
 const modalStyles = {
@@ -16,11 +16,15 @@ const modalStyles = {
 const Modal = () => {
   const { toppings, selectedItems, setSelectedItems, modalHandler } = useContext(ModalContext);
 
-  const initialState = toppings.map((topping) => {
-    if (selectedItems.some((selectedItem) => selectedItem.name === topping.name))
-      return { ...topping, isSelected: true };
-    else return { ...topping, isSelected: false };
-  });
+  const initialState = useMemo(
+    () =>
+      toppings.map((topping) => {
+        if (selectedItems.some((selectedItem) => selectedItem.name === topping.name))
+          return { ...topping, isSelected: true };
+        else return { ...topping, isSelected: false };
+      }),
+    [toppings, selectedItems]
+  );
 
   const [selectAllItems, setSelectAllItems] = useState(false);
   const [formState, setFormState] = useState(initialState);

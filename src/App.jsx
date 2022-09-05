@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState } from 'react';
 import ModalContext from './ModalContext';
 import Modal from './Modal';
 
