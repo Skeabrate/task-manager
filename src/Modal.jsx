@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useContext } from 'react';
+import React, { useMemo, useState, useContext, useEffect } from 'react';
 import ModalContext from './ModalContext';
 
 const Modal = () => {
@@ -61,6 +61,18 @@ const Modal = () => {
     [formState]
   );
 
+  useEffect(() => {
+    let allSelected = true;
+    formState.forEach((item) => {
+      if (!item.isSelected) {
+        allSelected = false;
+      }
+    });
+
+    if (allSelected) setSelectAllItems(true);
+    else setSelectAllItems(false);
+  }, [formState]);
+
   return (
     <div className='Modal'>
       <h2>Pizza Toppings</h2>
@@ -75,7 +87,12 @@ const Modal = () => {
 
       <form style={{ display: 'flex', flexDirection: 'column', marginBottom: '20px' }}>
         <label>
-          <input type='checkbox' value={selectAllItems} onChange={selectAllItemsHandler} />
+          <input
+            type='checkbox'
+            value={selectAllItems}
+            onChange={selectAllItemsHandler}
+            checked={selectAllItems}
+          />
           Select All
         </label>
         {formState.map(({ name, isSelected }) => {
