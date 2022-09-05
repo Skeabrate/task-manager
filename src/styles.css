@@ -1,0 +1,86 @@
+*, *::after, *::before {
+	font-family: 'Montserrat', sans-serif;
+	box-sizing: border-box;
+}
+
+button, input {
+	cursor: pointer;
+}
+
+body{
+	background-color: rgb(44, 44, 63);
+	color: white;
+}
+
+button{
+	padding: 10px 20px;
+	color: white;
+	font-weight: 600;
+	text-transform: uppercase;
+	border-radius: 10px;
+	border: none;
+}
+
+input{
+	margin-right: 10px;
+}
+
+.Modal{
+	background-color: rgb(210, 209, 209);
+  color: rgb(0, 0, 0);
+  padding: 20px;
+  width: 500px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+	border-radius: 10px;
+}
+
+.SuccessBtn {
+	background-color: rgb(53, 147, 53);
+}
+
+.ErrorBtn {
+	background-color: rgb(228, 68, 68);
+}
+
+.ToppingsList{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: rgb(31, 31, 44);
+	padding: 30px;
+	border-radius: 10px;
+}
+
+ul{
+	list-style: none;
+	padding: 0;
+}
+
+li{
+	background-color: white;
+	color: black;
+	font-weight: 600;
+	padding: 0 0 0 20px;
+	margin-block: 15px;
+	border-radius: 10px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-transform: capitalize;
+}
+
+li span{
+	background-color: rgb(27, 69, 127);
+	color: white;
+	width: 80px;
+	padding-block: 10px;
+	text-align: center;
+	align-self: flex-end;
+	border-radius: 0 10px 10px 0;
+}
+

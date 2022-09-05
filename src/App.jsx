@@ -24,20 +24,25 @@ function App() {
         modalHandler,
       }}
     >
-      <div>
-        <button onClick={modalHandler}>Select toppings</button>
-
+      <div className='ToppingsList'>
         <div>
-          You have selected:
-          {selectedItems.map((item) => (
-            <div key={item.name}>
-              {item?.name} for ${item?.value}
-            </div>
-          ))}
+          <h1>You have selected:</h1>
+          <ul>
+            {selectedItems.map((item) => (
+              <li key={item.name}>
+                {item?.name}
+                <span>${item?.value}</span>
+              </li>
+            ))}
+          </ul>
         </div>
 
-        {modalOpen ? <Modal /> : null}
+        <button className='SuccessBtn' onClick={modalHandler}>
+          Select toppings
+        </button>
       </div>
+
+      {modalOpen ? <Modal /> : null}
     </ModalContext.Provider>
   );
 }

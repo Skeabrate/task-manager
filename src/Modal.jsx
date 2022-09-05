@@ -1,18 +1,6 @@
 import React, { useMemo, useState, useContext } from 'react';
 import ModalContext from './ModalContext';
 
-const modalStyles = {
-  backgroundColor: 'white',
-  color: 'black',
-  padding: '20px',
-  width: '500px',
-  position: 'fixed',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  border: '1px solid black',
-};
-
 const Modal = () => {
   const { toppings, selectedItems, setSelectedItems, modalHandler } = useContext(ModalContext);
 
@@ -74,10 +62,16 @@ const Modal = () => {
   );
 
   return (
-    <div style={modalStyles}>
+    <div className='Modal'>
       <h2>Pizza Toppings</h2>
       <p>Please select the toppings you want on your pizza.</p>
-      <p>There will be an upcharge of ${finalPrice}</p>
+      <p style={{ height: '16px' }}>
+        {finalPrice ? (
+          <>
+            There will be an upcharge of <strong>${finalPrice}</strong>
+          </>
+        ) : null}
+      </p>
 
       <form style={{ display: 'flex', flexDirection: 'column', marginBottom: '20px' }}>
         <label>
@@ -100,10 +94,12 @@ const Modal = () => {
         })}
       </form>
 
-      <button style={{ marginRight: '10px' }} onClick={submitHandler}>
-        Confirm
+      <button className='SuccessBtn' style={{ marginRight: '10px' }} onClick={submitHandler}>
+        Save
       </button>
-      <button onClick={modalHandler}>Cancel</button>
+      <button className='ErrorBtn' onClick={modalHandler}>
+        Cancel
+      </button>
     </div>
   );
 };
