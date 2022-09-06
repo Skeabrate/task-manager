@@ -54,10 +54,7 @@ const Modal = () => {
   };
 
   const finalPrice = useMemo(
-    () =>
-      Math.floor(
-        formState.reduce((acc, item) => (item.isSelected ? acc + item.value : acc), 0) * 100
-      ) / 100,
+    () => formState.reduce((acc, item) => (item.isSelected ? acc + item.value : acc), 0).toFixed(2),
     [formState]
   );
 
