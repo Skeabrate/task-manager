@@ -20,11 +20,10 @@ const Modal = () => {
   const selectAllItemsHandler = () => {
     setSelectAllItems((allItemsState) => {
       setFormState((state) =>
-        state.reduce((acc, item) => {
-          item.isSelected = allItemsState ? false : true;
-          acc.push(item);
-          return acc;
-        }, [])
+        state.map((form) => {
+          form.isSelected = !allItemsState;
+          return form;
+        })
       );
       return !allItemsState;
     });
@@ -98,7 +97,7 @@ const Modal = () => {
               <input
                 type='checkbox'
                 name={name}
-                checked={selectAllItems || isSelected}
+                checked={isSelected}
                 value={isSelected}
                 onChange={checkBoxValueHandler}
               />
@@ -108,10 +107,17 @@ const Modal = () => {
         })}
       </form>
 
-      <button className='SuccessBtn' style={{ marginRight: '10px' }} onClick={submitHandler}>
+      <button
+        className='SuccessBtn'
+        style={{ marginRight: '10px' }}
+        onClick={submitHandler}
+      >
         Save
       </button>
-      <button className='ErrorBtn' onClick={modalHandler}>
+      <button
+        className='ErrorBtn'
+        onClick={modalHandler}
+      >
         Cancel
       </button>
     </div>
